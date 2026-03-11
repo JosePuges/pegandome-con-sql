@@ -19,16 +19,16 @@ SELECT * FROM invoice ORDER BY Total DESC LIMIT 5;
 
 SELECT DISTINCT BillingCountry FROM invoice;
 
-SELECT COUNT(*) AS TotalFacturas FROM invoice;
+SELECT COUNT(*) AS Total_facturas FROM invoice;
 
-SELECT CustomerId, COUNT(*) AS CantidadFacturas 
+SELECT CustomerId, COUNT(*) AS Cantidad_facturas 
 FROM invoice 
 GROUP BY CustomerId;
 
-SELECT BillingCountry, AVG(Total) AS TicketMedio 
+SELECT BillingCountry, AVG(Total) AS Ticket_medio 
 FROM invoice 
 GROUP BY BillingCountry 
-ORDER BY TicketMedio DESC;
+ORDER BY Ticket_medio DESC;
 
 -- Bloque D — Filtros Avanzados y Agregación
 
@@ -36,23 +36,23 @@ SELECT * FROM invoice WHERE Total BETWEEN 5 AND 15;
 
 SELECT * FROM invoice WHERE BillingCountry IN ('USA', 'Canada');
 
-SELECT BillingCountry, SUM(Total) AS GastoTotal 
+SELECT BillingCountry, SUM(Total) AS Gasto_total 
 FROM invoice 
 GROUP BY BillingCountry;
 
-SELECT BillingCountry, COUNT(*) AS NumeroFacturas 
+SELECT BillingCountry, COUNT(*) AS Numero_facturas 
 FROM invoice 
 GROUP BY BillingCountry 
 HAVING COUNT(*) > 10;
 
 --Bloque E — Análisis y Funciones de Fecha
-SELECT CustomerId, SUM(Total) AS GastoAcumulado 
+SELECT CustomerId, SUM(Total) AS Gasto_acumulado
 FROM invoice 
 GROUP BY CustomerId 
-ORDER BY GastoAcumulado DESC 
+ORDER BY Gasto_acumulado DESC 
 LIMIT 10;
 
-SELECT BillingCountry, COUNT(*) AS TotalFacturas, AVG(Total) AS TicketMedio 
+SELECT BillingCountry, COUNT(*) AS Total_facturas, ROUND(AVG(Total)2) AS Ticket_medio 
 FROM invoice 
 GROUP BY BillingCountry;
 
