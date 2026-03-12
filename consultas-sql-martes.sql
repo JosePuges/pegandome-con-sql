@@ -62,3 +62,20 @@ WHERE strftime('%Y', InvoiceDate) = '2012';
 SELECT * FROM invoice 
 ORDER BY Total DESC, InvoiceDate DESC 
 LIMIT 5;
+
+
+
+SELECT *
+FROM InvoiceLine il INNER JOIN Track t
+ON il.TrackId = t.TrackId
+LIMIT 5;
+
+SELECT *, SUM(Quantity)
+FROM InvoiceLine il INNER JOIN Track t
+ON il.TrackId = t.TrackId
+INNER JOIN Genre g
+ON g.GenreId = t.GenreId
+GROUP BY g.GenreId
+ORDER BY SUM(Quantity)
+LIMIT 5;
+	
